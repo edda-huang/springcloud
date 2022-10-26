@@ -1,0 +1,85 @@
+server:
+  port: 9001
+  tomcat:
+    max-threads: 500
+spring:
+  application:
+    name: basedata-service
+  datasource:
+    name: test
+    url: jdbc:postgresql://192.168.3.172:5432/basedata
+    username: dev
+    password: dev123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.postgresql.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  zipkin:
+    sender:
+      type: web
+    enabled: true
+    base-url: http://192.168.3.186:9411
+
+  rabbitmq:
+    host: 192.168.3.186
+    port: 5672
+    username: guest
+    password: Witon@2019!
+
+  #flyway配置 
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    clean-on-validation-error: false
+    locations: classpath:/db/migration
+    out-of-order: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.7.62:8080/eureka-server/eureka/
+
+cache:
+  redis:
+    cacheType: sentinel
+    keyPrefix: user
+    nodes: 192.168.3.185:18001,192.168.3.186:18001,192.168.3.187:18001
+    password: witon
+    masterName: witonmaster
+    database: 3
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          "*"
+  endpoint:
+    health:
+      show-details: always
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 5000
+
+threadpool:
+  sync:
+    poolSize: 20
+    warnSize: 500
+    queueSize: 20000
+    
+
