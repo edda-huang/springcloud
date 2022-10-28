@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: schedule-service
+  zipkin:
+    sender:
+      type: web
+    enabled: true
+    base-url: http://192.168.3.186:9411
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.7.62:8080/eureka-server/eureka/
+executor:
+  corePoolSize: 10
+  maxPoolSize: 30
+  keepAliveSeconds: 300
+  queueCapacity: 100
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  server:
+    #port: 9004
+    #servlet:
+    #  context-path: /
+    ssl:
+      enabled: false
+  endpoint:
+    health:
+      show-details: always
+      
+ribbon:
+  ConnectTimeout: 2000
+  ReadTimeout: 2000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0

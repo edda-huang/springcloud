@@ -82,4 +82,7 @@ threadpool:
     warnSize: 500
     queueSize: 20000
     
-
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    

@@ -2,6 +2,7 @@ package com.example.springcloud.basedata.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.springcloud.basedata.schedule.ScheduledService;
 import com.example.springcloud.basedata.service.UserInfoService;
 import com.example.springcloud.basedata.user.UserInfo;
 import com.example.springcloud.channel.log.LogRecord;
@@ -38,7 +39,7 @@ public class UserInfoController {
     @GetMapping("/getOne/{id}")
     public UserInfo getOne(@PathVariable("id") String id) {
         UserInfo userInfo = VoUtils.copyProperties(userInfoService.getById(id), UserInfo.class);
-        LogRecord logRecord=new LogRecord();
+        LogRecord logRecord = new LogRecord();
         logRecord.setRecord(userInfo);
         logRecordService.saveRecord(logRecord);
         return userInfo;

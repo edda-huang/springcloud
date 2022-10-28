@@ -3,6 +3,7 @@ package com.example.springcloud.basedata.service;
 
 import com.example.springcloud.basedata.user.UserInfo;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
 @FeignClient(value = "basedata-service")
 public interface UserInfoService {
 
-    @GetMapping("/list")
+    @GetMapping("/user-info/list")
     List<UserInfo> list();
-
+    
 }
