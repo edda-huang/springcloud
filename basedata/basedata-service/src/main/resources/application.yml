@@ -86,3 +86,6 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     
+
+
+SENSITIVE_WORD_PATH: D:\config\sensitive_word.txt
